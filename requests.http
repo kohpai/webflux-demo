@@ -1,0 +1,28 @@
+GET http://localhost:8080/resources/jokes
+Authorization: Basic jokereader topsecret
+Accept: application/json
+
+###
+GET http://localhost:8080/resources/jokes
+Authorization: Basic jokereader topsecret
+Accept: application/x-ndjson
+
+###
+GET http://localhost:8080/resources/jokes
+Accept: text/event-stream
+
+###
+GET http://localhost:8080/resources/jokes/live
+Accept: application/x-ndjson
+
+###
+GET http://localhost:8080/resources/jokes/live
+Accept: text/event-stream
+
+###
+POST http://localhost:8080/resources/jokes
+Authorization: Basic jokewriter topsecret
+Content-Type: text/plain
+
+My new joke, yay!
+###
