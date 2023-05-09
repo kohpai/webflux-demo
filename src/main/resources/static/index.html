@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script>
+            "use strict";
+
+            const JOKE_RESOURCE_URL = "/resources/jokes";
+
+            function loadJoke() {
+                const divElement = document.getElementById("content");
+
+                divElement.innerHTML = "<p>Load joke ...</p>";
+
+                const eventSource = new EventSource(JOKE_RESOURCE_URL + "/live");
+                eventSource.onmessage = event => {
+                    console.log(event);
+
+                    const joke = JSON.parse(event.data);
+                    divElement.innerHTML = joke.joke;
+                }
+            }
+        </script>
+    </head>
+
+    <body onload="loadJoke()">
+        <h1>Joke</h1>
+        <div id="content"></div>
+    </body>
+</html>
